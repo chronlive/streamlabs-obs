@@ -174,6 +174,9 @@ if (!gotTheLock) {
       defaultHeight: 1000
     });
 
+    const os = require('os');
+    const maximizable = !(os.platform() === 'win32' && os.release()[0] === '7')
+
     mainWindow = new BrowserWindow({
       minWidth: 800,
       minHeight: 600,
@@ -186,7 +189,7 @@ if (!gotTheLock) {
       title: 'Streamlabs OBS',
       backgroundColor: '#17242D',
       webPreferences: { nodeIntegration: true, webviewTag: true },
-      maximizable: false,
+      maximizable,
     });
 
     mainWindowState.manage(mainWindow);
