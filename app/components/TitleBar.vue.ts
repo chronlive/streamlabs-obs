@@ -28,7 +28,11 @@ export default class TitleBar extends Vue {
     if (win.isMaximized()) {
       win.unmaximize();
     } else {
-      win.maximize();
+      const currentDisplay = electron.remote.screen.getDisplayMatching(win.getBounds());
+
+      win.setBounds(currentDisplay.bounds);
+
+      // win.maximize();
     }
   }
 
