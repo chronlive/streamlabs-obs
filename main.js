@@ -175,7 +175,8 @@ if (!gotTheLock) {
     });
 
     const os = require('os');
-    const maximizable = !(os.platform() === 'win32' && os.release()[0] === '7')
+    // Windows 7 is version 6
+    const maximizable = !(os.platform() === 'win32' && os.release()[0] === '6')
 
     mainWindow = new BrowserWindow({
       minWidth: 800,
