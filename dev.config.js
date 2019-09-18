@@ -21,8 +21,13 @@ module.exports = merge.smart(baseConfig, {
     rules: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
-        options: { useCache: true, forceIsolatedModules: true, reportedFiles: ['app/**/*.ts'] },
+        loader: [
+          'babel-loader',
+          {
+            loader: 'awesome-typescript-loader',
+            options: { useCache: true, forceIsolatedModules: true, reportedFiles: ['app/**/*.ts'] }
+          }
+        ],
         exclude: /node_modules|vue\/src/
       },
       {

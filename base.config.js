@@ -61,7 +61,7 @@ module.exports = {
             video: 'src',
             source: 'src'
           },
-          loaders: { ts: 'awesome-typescript-loader' }
+          loaders: { ts: ['babel-loader', 'awesome-typescript-loader'] }
         }
       },
       {
