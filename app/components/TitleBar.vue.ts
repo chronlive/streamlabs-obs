@@ -14,6 +14,16 @@ export default class TitleBar extends Vue {
 
   @Prop() title: string;
 
+  mounted() {
+    electron.remote.getCurrentWindow().on('maximize', () => {
+      console.log('GOT MAXIMIZE');
+      const win = electron.remote.getCurrentWindow();
+      const currentDisplay = electron.remote.screen.getDisplayMatching(win.getBounds());
+
+      win.setBounds(currentDisplay.bounds);
+    });
+  }
+
   minimize() {
     electron.remote.getCurrentWindow().minimize();
   }
@@ -22,17 +32,25 @@ export default class TitleBar extends Vue {
     return electron.remote.getCurrentWindow().isMaximizable() !== false;
   }
 
+  unmaximizedSize: electron.Rectangle;
+
   maximize() {
     const win = electron.remote.getCurrentWindow();
 
+    // WINDOWS 7 FAKE MAXIMIZE MODE
+    // if (!this.unmaximizedSize) {
+
+    // }
+
+    // const currentDisplay = electron.remote.screen.getDisplayMatching(win.getBounds());
+
+    // win.setBounds(currentDisplay.bounds);
+
+    // NORMAL MODE
     if (win.isMaximized()) {
       win.unmaximize();
     } else {
-      const currentDisplay = electron.remote.screen.getDisplayMatching(win.getBounds());
-
-      win.setBounds(currentDisplay.bounds);
-
-      // win.maximize();
+      win.maximize();
     }
   }
 
