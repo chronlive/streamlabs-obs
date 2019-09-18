@@ -30,7 +30,8 @@ export default class TitleBar extends Vue {
 
     // This special behavior is required for windows 7 because of a bug
     // where the display disappears when maximized. (Windows 7 is version 6)
-    if (os.platform() === 'win32' && os.release()[0] === '6') {
+    // if (os.platform() === 'win32' && os.release()[0] === '6') {
+    if (true) {
       if (this.unmaximizeBounds) {
         win.setBounds(this.unmaximizeBounds);
         this.unmaximizeBounds = null;
