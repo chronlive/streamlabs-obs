@@ -190,7 +190,7 @@ if (!gotTheLock) {
       title: 'Streamlabs OBS',
       backgroundColor: '#17242D',
       webPreferences: { nodeIntegration: true, webviewTag: true },
-      maximizable,
+      maximizable: true,
     });
 
     mainWindowState.manage(mainWindow);
