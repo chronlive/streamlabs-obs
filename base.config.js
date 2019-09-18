@@ -66,8 +66,10 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
-        options: { useCache: true, reportedFiles: ['app/**/*.ts'] },
+        loader: ['babel-loader', {
+          loader: 'awesome-typescript-loader',
+          options: { useCache: true, reportedFiles: ['app/**/*.ts'] }
+        }],
         exclude: /node_modules|vue\/src/
       },
       {

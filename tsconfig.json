@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "lib": [
       "dom",
       "es7",
@@ -30,6 +30,7 @@
   ],
   "include": [
     "node_modules/vue-tsx-support/enable-check.d.ts",
-    "./app/**/*.ts"
+    "./app/**/*.ts",
+    "./app/**/*.tsx"
   ]
 }
