@@ -18,18 +18,31 @@ export default class TitleBar extends Vue {
     electron.remote.getCurrentWindow().minimize();
   }
 
-  get isMaximizable() {
-    return electron.remote.getCurrentWindow().isMaximizable() !== false;
-  }
+  unmaximizeBounds: electron.Rectangle;
 
   maximize() {
     const win = electron.remote.getCurrentWindow();
 
-    if (win.isMaximized()) {
-      win.unmaximize();
+    // WIN 7 BEHAVIOR
+    if (this.unmaximizeBounds) {
+      win.setBounds(this.unmaximizeBounds);
+      this.unmaximizeBounds = null;
     } else {
-      win.maximize();
+      this.unmaximizeBounds = win.getBounds();
+      const display = electron.remote.screen.getDisplayMatching(this.unmaximizeBounds);
+      win.setBounds(display.bounds);
+
+      win.once('resize', () => {
+        this.unmaximizeBounds = null;
+      });
     }
+
+    // NORMAL BEHAVIOR
+    // if (win.isMaximized()) {
+    //   win.unmaximize();
+    // } else {
+    //   win.maximize();
+    // }
   }
 
   close() {
