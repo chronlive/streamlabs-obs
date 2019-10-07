@@ -268,6 +268,7 @@ export class StreamingService extends StatefulService<IStreamingServiceState>
   }
 
   get twitterIsEnabled() {
+    return false;
     return this.incrementalRolloutService.featureIsEnabled(EAvailableFeatures.twitter);
   }
 
