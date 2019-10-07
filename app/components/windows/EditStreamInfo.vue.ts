@@ -366,10 +366,8 @@ export default class EditStreamInfo extends Vue {
   }
 
   get twitterIsEnabled() {
-    return (
-      Utils.isPreview() ||
-      this.incrementalRolloutService.featureIsEnabled(EAvailableFeatures.twitter)
-    );
+    return false;
+    return this.incrementalRolloutService.featureIsEnabled(EAvailableFeatures.twitter);
   }
 
   get submitText() {
