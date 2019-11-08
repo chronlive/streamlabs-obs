@@ -26,6 +26,7 @@ export interface ICustomizationServiceState {
   chatZoomFactor: number;
   enableBTTVEmotes: boolean;
   enableFFZEmotes: boolean;
+  enableMXE: boolean;
   mediaBackupOptOut: boolean;
   navigateToLiveOnStreamStart: boolean;
   experimental: any;

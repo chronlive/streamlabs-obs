@@ -59,6 +59,7 @@ export class CustomizationService extends PersistentStatefulService<ICustomizati
     chatZoomFactor: 1,
     enableBTTVEmotes: false,
     enableFFZEmotes: false,
+    enableMXE:false,
     mediaBackupOptOut: false,
     folderSelection: false,
     navigateToLiveOnStreamStart: true,
@@ -213,6 +214,16 @@ export class CustomizationService extends PersistentStatefulService<ICustomizati
         visible: true,
         enabled: true,
       },
+
+       <IObsInput<boolean>>{
+         value: settings.enableMXE,
+         name: 'enableMXE',
+         description: $t('Enable MixerElixer for Mixer'),
+         type: 'OBS_PROPERTY_BOOL',
+         visible: true,
+         enabled: true,
+       }
+
     ];
   }
 

@@ -217,6 +217,17 @@ export class ChatService extends Service {
           true,
         );
       }
+
+      if (settings.enableMXE && this.userService.platform.type === 'mixer') {
+              this.chatView.webContents.executeJavaScript(
+                `
+                var mxescript = document.createElement('script');
+                mxescript.setAttribute('src','https://api.mixrelixr.com/scripts/elixr-emotes-embedded-chat.bundle.js');
+                document.head.appendChild(mxescript);
+              `,
+                true,
+              );
+            }
     });
   }
 
