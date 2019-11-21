@@ -97,10 +97,7 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
   private overlayRunning = false;
 
   async initializeOverlay() {
-    if (!this.state.isEnabled) return;
-
-    if (this.overlayRunning) return;
-    this.overlayRunning = true;
+    if (!this.state.isEnabled || this.overlayRunning) return;
 
     let crashHandlerLogPath = '';
     if (process.env.NODE_ENV !== 'production' || !!process.env.SLOBS_PREVIEW) {
@@ -138,6 +135,7 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
 
     this.createPreviewWindows();
     await this.configureWindows();
+    this.overlayRunning = true;
   }
 
   assignCommonWindowOptions() {
@@ -272,7 +270,7 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
 
   toggleOverlay() {
     // This is a typo in the module: "runing"
-    if (overlay.getStatus() !== 'runing' || !this.state.isEnabled) {
+    if (overlay.getStatus() !== 'runing' || !this.state.isEnabled || !this.overlayRunning) {
       return;
     }
 
@@ -316,7 +314,7 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
 
   async setPreviewMode(previewMode: boolean) {
     if (this.state.isShowing) this.hideOverlay();
-    if (!this.state.isEnabled) return;
+    if (!this.state.isEnabled || !this.overlayRunning) return;
     this.SET_PREVIEW_MODE(previewMode);
     if (previewMode) {
       this.enabledWindows.forEach(win => this.previewWindows[win].show());
@@ -346,7 +344,6 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
   }
 
   async destroy() {
-    if (!this.lifecycle) return;
     await this.destroyOverlay();
   }
 
