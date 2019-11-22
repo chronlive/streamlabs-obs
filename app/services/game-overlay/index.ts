@@ -47,7 +47,7 @@ const hideInteraction = `
   });
 `;
 
-@InitAfter('UserService')
+@InitAfter('RecentEventsService')
 export class GameOverlayService extends PersistentStatefulService<GameOverlayState> {
   @Inject() userService: UserService;
   @Inject() customizationService: CustomizationService;
