@@ -134,7 +134,7 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
     this.windows.chat.webContents.setAudioMuted(true);
 
     this.createPreviewWindows();
-    await this.configureWindows();
+    this.configureWindows();
     this.overlayRunning = true;
   }
 
@@ -179,7 +179,7 @@ export class GameOverlayService extends PersistentStatefulService<GameOverlaySta
     });
   }
 
-  async configureWindows() {
+  configureWindows() {
     Object.keys(this.windows).forEach((key: string) => {
       const win = this.windows[key];
       win.webContents.once('did-finish-load', () => this.onWindowsReady.next(win));
