@@ -29,7 +29,7 @@
   "Your media files are currently being synced with the cloud. ": "Seus arquivos de mídia estão atualmente sendo sincronizados com a nuvem. ",
   "It is recommended that you wait until this finishes before going live.": "É recomendado que aguarde até que este termine para entrar ao vivo.",
   "Go Live Anyway": "Iniciar transmissão de qualquer modo",
-  "Wait": "Espere",
+  "Wait": "Aguarde",
   "Add a new Scene.": "Adicionar uma nova Cena.",
   "Remove Scene.": "Remover Cena.",
   "Edit Scene Transitions.": "Editar transições de cena.",
@@ -39,5 +39,5 @@
   "Name Folder": "Nomear pasta",
   "Switch Scenes": "Alternar cenas",
   "Failed to load scene collection.  A new one will be created instead.": "Falha ao carregar a coleção de cenas. Uma nova cena será criada.",
-  "New Scene": "New Scene"
+  "New Scene": "Nova Cena"
 }
